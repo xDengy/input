@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        fieldset {
+            padding: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        legend {
+            float: none;
+        }
+
+        .container {
+            width: 1200px;
+        }
+
+        .input {
+            margin-bottom: 20px;
+        }
+
+        .left-zone {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+        }
+
+        .image {
+            width: 50%;
+        }
+    </style>
+
+</head>
+<body>
+
+<form action="/" method="POST" name="myform" id="myform" enctype="multipart/form-data" target="_blank">
+    <div class="container">
+        <fieldset>
+            <legend>Одежда</legend>
+
+            <div class="left-zone" id="wear-form">
+                <label class="input">
+                    Тип одежды
+                    <select id='type_of_wear' name="type_of_wear" style="width: 100px" required>
+                        <option></option>
+                        <option value='Joggers'>Джоггеры</option>
+                        <option value='Jeans'>Джинсы</option>
+                        <option value='Shorts'>Шорты</option>
+                    </select>
+                </label>
+                <label class="input">
+                    Размер одежды
+                    <select name="size_of_wear" style="width: 100px" required>
+                        <option></option>
+                        <option value='S'>S</option>
+                        <option value='M'>M</option>
+                        <option value='L'>L</option>
+                        <option value='XL'>XL</option>
+                    </select>
+                </label>
+                <label class="input">
+                    Цвет одежды
+                    <select name="color_of_wear" style="width: 100px" required>
+                        <option></option>
+                        <option value='Red'>Красный</option>
+                        <option value='Green'>Зеленый</option>
+                        <option value='Black'>Черный</option>
+                        <option value='Blue'>Синий</option>
+                        <option value='White'>Белый</option>
+                    </select>
+                </label>
+                <label class="input">
+                    Количество
+                    <input type="number" name="number" value="number" max="10" min="1" placeholder="1"
+                           style="width: 100px">
+                </label>
+                <fieldset>
+                    <legend>Следующая страница</legend>
+                    <button type="button" name="next" id="next_form"
+                            style="width: 100px; height: 50px; text-align: center">Далее
+                    </button>
+                </fieldset>
+            </div>
+
+            <div class="left-zone" id="form-submit" hidden>
+                <label class="input">
+                    Телефон
+                    <input type="tel" name="tel" required>
+                </label>
+                <label class="input">
+                    Адрес
+                    <input type="text" name="address" required>
+                </label>
+                <label class="input">
+                    Имя
+                    <input type="text" name="name" required>
+                </label>
+                <label class="input">
+                    Фамилия
+                    <input type="text" name="2nd_name" required>
+                </label>
+                <label class="input">
+                    Электронная почта
+                    <input type="email" name="email" required>
+                </label>
+                <fieldset>
+                    <legend>Оформить заказ</legend>
+                    <button type="button" value="save" name="submit_form" id="submit_form"
+                            style="width: 100px; height: 50px; text-align: center; margin-right: 20px">Отправить
+                    </button>
+                    <button type="button" name="prev" id="prev_form"
+                            style="width: 100px; height: 50px; text-align: center">Назад
+                    </button>
+                </fieldset>
+            </div>
+
+            <div class="image">
+                <img src="images/type_of_wear_1.jpg" alt="" name="wear_img[Joggers]" id='wear_img_Joggers'
+                     class='wear_img'
+                     hidden>
+                <img src="images/type_of_wear_2.jpg" alt="" name="wear_img[Jeans]" id='wear_img_Jeans' class='wear_img'
+                     hidden>
+                <img src="images/type_of_wear_3.jpg" alt="" name="wear_img[Shorts]" id='wear_img_Shorts'
+                     class='wear_img'
+                     hidden>
+            </div>
+        </fieldset>
+
+    </div>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
