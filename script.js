@@ -97,23 +97,22 @@ function submitForm() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const elements = document.querySelectorAll('.form_item');
+        const elements = document.querySelectorAll('.form_item');
 
-    elements.forEach(item => {
-        const name = item.getAttribute('name');
+        elements.forEach(item => {
+            const name = item.getAttribute('name');
 
-        item.addEventListener('input', event => {
-            localStorage.setItem(name, item.value)
+            item.addEventListener('input', event => {
+                localStorage.setItem(name, item.value)
+            });
+
+            item.value = localStorage.getItem(name);
         });
 
 
-        item.value = localStorage.getItem(name);
-    });
-
-
-    imgLoad();
-    nextStep();
-    prevStep();
-    submitForm();
+imgLoad();
+nextStep();
+prevStep();
+submitForm();
 
 })
