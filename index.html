@@ -10,51 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <link href="showform.html">
-
-    <style>
-        body {
-            margin: 0;
-        }
-
-        form {
-            margin-top: 20px;
-        }
-
-        fieldset {
-            padding: 10px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        legend {
-            float: none;
-        }
-
-        .container {
-            width: 1200px;
-        }
-
-        .input {
-            margin-bottom: 20px;
-        }
-
-        .left-zone {
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-            font-family: "Roboto Light";
-        }
-
-        .image {
-            width: 50%;
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 
 </head>
 <body>
 
-<form method="POST" name="myform" id="myform">
+<form method="POST" name="myForm" id="myForm" class="myForm">
     <div class="container">
         <fieldset>
             <legend>Одежда</legend>
@@ -62,43 +23,43 @@
             <div class="left-zone" id="wear-form">
                 <label class="input">
                     Тип одежды
-                    <select id='type_of_wear' name="type_of_wear" style="width: 100px" required>
+                    <select id="type_of_wear" name="type_of_wear" class="form_item input__select" required>
                         <option></option>
-                        <option value='Joggers'>Джоггеры</option>
-                        <option value='Jeans'>Джинсы</option>
-                        <option value='Shorts'>Шорты</option>
+                        <option value="Джоггеры">Джоггеры</option>
+                        <option value="Джинсы">Джинсы</option>
+                        <option value="Шорты">Шорты</option>
                     </select>
                 </label>
                 <label class="input">
                     Размер одежды
-                    <select id="size_of_wear" name="size_of_wear" style="width: 100px" required>
+                    <select id="size_of_wear" name="size_of_wear" class="form_item input__select" required>
                         <option></option>
-                        <option value='S'>S</option>
-                        <option value='M'>M</option>
-                        <option value='L'>L</option>
-                        <option value='XL'>XL</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
                     </select>
                 </label>
                 <label class="input">
                     Цвет одежды
-                    <select id="color_of_wear" name="color_of_wear" style="width: 100px" required>
+                    <select id="color_of_wear" name="color_of_wear" class="form_item input__select" required>
                         <option></option>
-                        <option value='Red'>Красный</option>
-                        <option value='Green'>Зеленый</option>
-                        <option value='Black'>Черный</option>
-                        <option value='Blue'>Синий</option>
-                        <option value='White'>Белый</option>
+                        <option value="Красный">Красный</option>
+                        <option value="Зеленый">Зеленый</option>
+                        <option value="Черный">Черный</option>
+                        <option value="Синий">Синий</option>
+                        <option value="Белый">Белый</option>
                     </select>
                 </label>
                 <label class="input">
                     Количество
-                    <input id="number" type="number" name="number" value="number" max="10" min="1" placeholder="1"
-                           style="width: 100px">
+                    <input id="number" type="number" name="number" value="1" max="10" min="1"
+                           class="form_item input__number">
                 </label>
                 <fieldset>
                     <legend>Следующая страница</legend>
-                    <button type="button" name="next" id="next_form"
-                            style="width: 100px; height: 50px; text-align: center">Далее
+                    <button type="button" name="next" id="next_form" class="btn">
+                        Далее
                     </button>
                 </fieldset>
             </div>
@@ -106,12 +67,12 @@
             <div class="left-zone" id="form-submit" hidden>
                 <label class="input">
                     Телефон
-                    <input id="tel" type="tel" name="tel" required>
+                    <input id="tel" type="tel" name="tel" class="form_item" required>
                 </label>
 
                 <label class="input">
                     Город
-                    <select id="city" name="city" style="width: 100px" required>
+                    <select id="city" name="city" class="form_item input__select" required>
                         <option></option>
                         <option value="Ростов">Ростов</option>
                         <option value="Москва">Москва</option>
@@ -121,42 +82,43 @@
 
                 <label class="input">
                     Адрес
-                    <input id="address" type="text" name="address" required>
+                    <input id="address" type="text" name="address" class="form_item" required>
                 </label>
                 <label class="input">
                     Имя
-                    <input id="name" type="text" name="name" required>
+                    <input id="name" type="text" name="name" class="form_item" required>
                 </label>
                 <label class="input">
                     Фамилия
-                    <input id="2ndName" type="text" name="2ndname" required>
+                    <input id="2ndName" type="text" name="2ndname" class="form_item" required>
                 </label>
                 <label class="input">
                     Электронная почта
-                    <input id="mail" type="email" name="email" required>
+                    <input id="mail" type="email" name="email" class="form_item" required>
                 </label>
                 <fieldset>
                     <legend>Оформить заказ</legend>
-                    <button type="button" value="save" name="submit_form" id="submit_form"
-                            style="width: 100px; height: 50px; text-align: center; margin-right: 20px">Отправить
+                    <button type="button" value="save" name="submit_form" id="submit_form" class="btn">
+                        Отправить
                     </button>
-                    <button type="button" name="prev" id="prev_form"
-                            style="width: 100px; height: 50px; text-align: center">Назад
+                    <button type="button" name="prev" id="prev_form" class="btn">
+                        Назад
                     </button>
                 </fieldset>
             </div>
 
-            <div class="left-zone" id="showform" hidden>
+            <div class="left-zone showForm" id="showForm" hidden>
             </div>
 
-            <div class="image">
-                <img src="images/type_of_wear_1.jpg" alt="" name="wear_img[Joggers]" id='wear_img_Joggers'
-                     class='wear_img'
+            <div class="form_item image">
+                <img src="images/type_of_wear_1.jpg" alt="" name="wear_img[Джоггеры]" id="wear_img_Джоггеры"
+                     class="form_item wear_img"
                      hidden>
-                <img src="images/type_of_wear_2.jpg" alt="" name="wear_img[Jeans]" id='wear_img_Jeans' class='wear_img'
+                <img src="images/type_of_wear_2.jpg" alt="" name="wear_img[Джинсы]" id="wear_img_Джинсы"
+                     class="form_item wear_img"
                      hidden>
-                <img src="images/type_of_wear_3.jpg" alt="" name="wear_img[Shorts]" id='wear_img_Shorts'
-                     class='wear_img'
+                <img src="images/type_of_wear_3.jpg" alt="" name="wear_img[Шорты]" id="wear_img_Шорты"
+                     class="form_item wear_img"
                      hidden>
             </div>
         </fieldset>

@@ -1,25 +1,25 @@
 'use strict'
 
-function next() {
+function nextStep() {
     document.getElementById('next_form').onclick = function () {
         document.getElementById('form-submit').hidden = false;
         document.getElementById('wear-form').hidden = true;
-        document.getElementById('showform').hidden = true;
+        document.getElementById('showForm').hidden = true;
     }
 }
 
-function prev() {
+function prevStep() {
     document.getElementById('prev_form').onclick = function () {
         document.getElementById('form-submit').hidden = true;
         document.getElementById('wear-form').hidden = false;
-        document.getElementById('showform').hidden = true;
+        document.getElementById('showForm').hidden = true;
     }
 }
 
-function img() {
-    let WearTypes = document.getElementById('type_of_wear');
+function imgLoad() {
+    let wearTypes = document.getElementById('type_of_wear');
     let typeCollection = document.querySelectorAll('.wear_img');
-    WearTypes.onchange = function () {
+    wearTypes.onchange = function () {
         for (let i = 0; i < typeCollection.length; i++) {
             typeCollection[i].hidden = true;
         }
@@ -33,6 +33,8 @@ function img() {
 function submitForm() {
     document.getElementById('submit_form').addEventListener('click', () => {
         let validated = true;
+        let array = [];
+        let inputCount = 0;
 
         document.querySelectorAll('[required]').forEach((item) => {
             if (item.value.length < 1) {
@@ -42,48 +44,79 @@ function submitForm() {
         });
 
         if (!validated) {
-            alert("Заполните все поля");
+            alert("Заполните пустые поля");
             return;
         }
 
+        function addArray() {
+            let data = document.querySelectorAll('.form_item ')
+
+            for (let i = 0; i < data.length; i++) {
+                if (inputCount === 0) {
+                    array[i] = "Тип одежды : " + data[i].value;
+                    inputCount++
+                    continue;
+                }
+                if (inputCount === 1) {
+                    array[i] = "Размер одежды : " + data[i].value;
+                    inputCount++
+                    continue;
+                }
+                if (inputCount === 2) {
+                    array[i] = "Цвет одежды : " + data[i].value;
+                    inputCount++
+                    continue;
+                }
+                if (inputCount === 5) {
+                    array[i] = "Город : " + data[i].value;
+                    inputCount++
+                    continue;
+                }
+                let textField = data[inputCount].labels[0].innerText;
+                array[i] = textField + ": " + data[i].value;
+                inputCount++;
+            }
+        }
+
         function fillForm() {
-            let ShowTypeOfWear = document.getElementById('type_of_wear').value;
-            let ShowSizeOfWear = document.getElementById('size_of_wear').value;
-            let ShowColorOfWear = document.getElementById('color_of_wear').value;
-            let ShowNumber = document.getElementById('number').value;
-            let ShowTel = document.getElementById('tel').value;
-            let ShowCity = document.getElementById('city').value;
-            let ShowAddress = document.getElementById('address').value;
-            let ShowName = document.getElementById('name').value;
-            let Show2ndName = document.getElementById('2ndName').value;
-            let ShowMail = document.getElementById('mail').value;
+            for (let i = 0; i < array.length; i++) {
 
-
-            let showHtml = 'Тип одежды: ' + ShowTypeOfWear + '<br>' + 'Размер одежды: ' + ShowSizeOfWear + '<br>' + 'Цвет одежды: ' + ShowColorOfWear + '<br>' + 'Размер одежды: ' + ShowNumber + '<br>' + 'Телефон: ' + ShowTel + '<br>' + 'Город: ' + ShowCity + '<br>' + 'Адрес: ' + ShowAddress + '<br>' + 'Имя: ' + ShowName + '<br>' + 'Фамилия: ' + Show2ndName + '<br>' + 'Электронная почта: ' + ShowMail;
-
-            document.getElementById('showform').innerHTML = showHtml;
+                document.getElementById('showForm').insertAdjacentHTML("beforeend", '<div></div>' + array[i]);
+            }
         }
 
         document.getElementById('form-submit').hidden = true;
-        document.getElementById('showform').hidden = false;
-        fillForm();
+        document.getElementById('showForm').hidden = false;
 
+        addArray();
+        fillForm();
+        localStorage.clear();
     });
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    img();
-    next();
-    prev();
+
+    const elements = document.querySelectorAll('.form_item');
+
+    elements.forEach(item => {
+        const name = item.getAttribute('name');
+
+        item.addEventListener('input', event => {
+            localStorage.setItem(name, item.value)
+        });
+        item.addEventListener('load', event => {
+            localStorage.setItem(name, item.value)
+        });
+
+
+        item.value = localStorage.getItem(name);
+    });
+
+
+    imgLoad();
+    nextStep();
+    prevStep();
     submitForm();
 
 })
-
-/*
-function showForm (){
-    let showMyForm = 'showform.html';
-    document.getElementById('submit_form').addEventListener('click', () => {
-        document.open(showMyForm);
-    });
-}*/
