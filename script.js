@@ -105,9 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('input', event => {
             localStorage.setItem(name, item.value)
         });
-        item.addEventListener('load', event => {
-            localStorage.setItem(name, item.value)
-        });
 
 
         item.value = localStorage.getItem(name);
